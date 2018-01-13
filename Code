@@ -1,0 +1,54 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Nomina
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            String codigo, nombre, puesto;
+            double dias_trabajados = 0, sueldo_dias = 0, Sueldo_Neto = 0, horas =0, horas_extra = 0;
+            Console.WriteLine("Bienvenido al programa de calculo de nomina 2.0 de Unisite");
+            Console.WriteLine("Por favor ingrese los siguientes datos");
+            Console.Write("Escriba su codigo de Empleado:");
+            codigo = Console.ReadLine();
+            Console.Write("Escriba su nombre completo:");
+            nombre = Console.ReadLine();
+            Console.Write("Escriba el nombre de su puesto:");
+            puesto = Console.ReadLine();
+            Console.Write("Escriba el numero de dias laborados:");
+            dias_trabajados = Convert.ToDouble(Console.ReadLine());
+            /*if (dias_trabajados <= 0)
+            {
+                Console.Write($"/n/nNo puede escribir {dias_trabajados} intente de nuevo");
+                dias_trabajados = 0;
+            }*/
+            Console.Write("Escriba su sueldo por dia:");
+            sueldo_dias = Convert.ToDouble(Console.ReadLine());
+
+            horas = dias_trabajados * 8;
+            if(horas > 40)
+            {
+                horas_extra = horas - 40;
+                Sueldo_Neto = (horas * sueldo_dias) + ((horas_extra * 2)* sueldo_dias);
+            }
+            else
+            {
+                Sueldo_Neto = horas * sueldo_dias;
+            }
+
+            Console.WriteLine("------------------------------- ");
+            Console.WriteLine("La nomina es la siguiente ");
+            Console.WriteLine($"Codigo: {codigo}");
+            Console.WriteLine($"Nombre: {nombre}");
+            Console.WriteLine($"Puesto: {puesto}");
+            Console.WriteLine($"Sueldo Neto: {Sueldo_Neto}");
+            Console.WriteLine($"Horas Extra: {horas_extra}");
+            Console.ReadKey();
+        }
+    }
+}
